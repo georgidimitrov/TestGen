@@ -1,6 +1,9 @@
 class Numbers
 	def Numbers.hexGen
-			temp = ((0x0001) + Random.rand(0xFFFF)).to_s(16)
+			while true do
+				temp = ((0x0001) + Random.rand(0xFFFF)).to_s(16)
+				return temp if temp.length == 4
+			end
 	end
 
 	def Numbers.shiftGen
@@ -11,17 +14,11 @@ class Numbers
 		temp = Random.rand(100..444)
 	end
 
-	def Numbers.bitwiseGen
-		for i in 1..3 do
-			temp = Random.rand(1..3)
-			if temp == 1
-				puts "|"
-			elsif temp === 2
-				puts "^"
-			else
-				puts "&"
-			end
-		end
+	def Numbers.shexGen
+		temp = Random.rand(0x000A..0x000F).to_s(16)
 	end
 
+	def Numbers.rand
+			temp = Random.rand(1..3)
+	end
 end
