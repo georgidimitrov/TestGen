@@ -1,7 +1,7 @@
 TestGen
 =======
 ###Program task.
-Creates a numbers of pdf tests and pdf answers.
+Creates a numbers of pdf tests with pdf answers.
 
 Files:
 ``` 
