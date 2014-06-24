@@ -90,8 +90,8 @@ class Tests
 
 			info = String.new
 			info << "left = ? \n\n"
-			info << "int i = #{i} \n"
-			info << "int left = #{i} #{bitwise} (1 << #{shift}) \n" 
+			info << "int i = 0x#{i}; \n"
+			info << "int left = #{i} #{bitwise} (1 << #{shift}); \n" 
 			return [info, answers]
 	end
 	
@@ -115,9 +115,9 @@ class Tests
 
 		info = String.new
 		info << "result = ? \n\n"
-		info << "long value1 = #{value1} \n"
-		info << "long value2 = #{value2} \n"
-		info << "int result = (value1 << #{shift1}) #{bitwise} (value2 >> #{shift2}) \n"
+		info << "long value1 = 0x#{value1}; \n"
+		info << "long value2 = 0x#{value2}; \n"
+		info << "int result = (value1 << #{shift1}) #{bitwise} (value2 >> #{shift2}); \n"
 
 		return[info, answers]
 	end
@@ -142,9 +142,75 @@ class Tests
 
 			info = String.new
 			info << "result = ? \n\n"
-			info << "int value1 = #{value1} \n" 
-			info << "int value2 = #{value2} \n"
-			info << "int result = (value1 << #{shift1}) #{bitwise} (value2 >> #{shift2})\n"
+			info << "int value1 = #{value1}; \n" 
+			info << "int value2 = #{value2}; \n"
+			info << "int result = (value1 << #{shift1}) #{bitwise} (value2 >> #{shift2});\n"
 			return [info, answers]
+	end
+
+	def Tests.taskNine
+		testValue = Numbers.hexGen + Numbers.hexGen
+		shift = Numbers.shiftGen
+		
+		if(testValue.hex & (1 << shift))
+			answers = 1
+		else
+			answers = 2
+		end
+
+		info = String.new
+		info << "a = ?\n\n"
+		info << "long testValue = 0x#{testValue}; \n"
+		info << "int a = 0; \n"
+		info << "if (testValue & (1 << #{shift}))
+{
+a = 1;
+}
+else
+{
+a = 2;
+} \n"
+		return [info, answers]
+	end
+
+	def Tests.taskTen
+		testValue = Numbers.hexGen + Numbers.hexGen
+		shift = Numbers.shiftGen
+		
+		if( (result = testValue.hex & testValue.hex ^ testValue.hex | (0x1 << shift)) )
+			answers = 1
+		else
+			answers = 2
+		end
+
+		info = String.new
+		info << "a = ?, result = ? \n"
+		info << "long testValue = 0x#{testValue};\n"
+		info << "a = 0; \n"
+		info << "result = 0;\n\n"
+		info << "if ((result = testValue & testValue ^ testValue | (1 << #{shift}))
+{
+a = 1;
+}
+else
+{
+a = 2;
+}  \n"
+		return[info, answers]
+	end
+
+	def Tests.taskTwelve
+		value1 = Numbers.decGen
+		value2 = Numbers.decGen
+		shift1 = Numbers.smallshiftGen
+		shift2 = Numbers.smallshiftGen		
+		answers = ((value1 << shift1) ^ (value2 >> shift2)).to_s(16)
+
+		info = String.new
+		info << "result = ? \n"
+		info << "int value1 = #{value1}; \n"
+		info << "int value2 = #{value2}; \n\n"
+		info << "int result = ((value1 << #{shift1}) ^ (value2 >> #{shift2})); \n" 
+		return [info, answers]	
 	end
 end
