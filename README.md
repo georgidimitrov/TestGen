@@ -13,3 +13,7 @@ If you do not have Prawn:
 ```
 $ sudo gem install prawn
 ```  
+And if you are missing gems:
+``` 
+$ sudo apt-get install rubygems
+``` 
