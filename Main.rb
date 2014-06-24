@@ -2,10 +2,6 @@ require_relative "PDFGen"
 require 'fileutils'
 
 class Main
-	#attr_reader :numOfTests
-
-		
-
 
 	def start
 		a = ARGV[0]
