@@ -1,5 +1,15 @@
 TestGen
 =======
+###Program task.
+Creates a numbers of pdf tests and pdf answers.
+
+Files:
+``` 
+ Main.rb
+ Tests.rb
+ Numbers.rb
+ PDFGen.rb
+``` 
 
 ###To use the program you must compile it.
 Example:
