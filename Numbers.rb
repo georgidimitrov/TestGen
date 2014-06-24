@@ -11,7 +11,7 @@ class Numbers
 	end
 
 	def Numbers.decGen
-		temp = Random.rand(100..444)
+		temp = Random.rand(60..600)
 	end
 
 	def Numbers.shexGen
@@ -19,6 +19,10 @@ class Numbers
 	end
 
 	def Numbers.rand
-			temp = Random.rand(1..3)
+		temp = Random.rand(1..3)
+	end
+
+	def Numbers.smallshiftGen
+		temp = Random.rand(2..8)
 	end
 end
