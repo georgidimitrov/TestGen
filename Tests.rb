@@ -103,13 +103,13 @@ class Tests
 		temp = Numbers.rand
 
 		if temp == 1
-			answers = ((value1.to_i(32) << shift1) | (value2.hex >> shift2)).to_s(32)
+			answers = ((value1.to_i(16) << shift1) | (value2.hex >> shift2)).to_s(16)
 			bitwise = "|"
 		elsif temp == 2
-			answers = ((value1.to_i(32) << shift1) ^ (value2.hex >> shift2)).to_s(32)
+			answers = ((value1.to_i(16) << shift1) ^ (value2.hex >> shift2)).to_s(16)
 			bitwise = "^"
 		else
-			answers = ((value1.to_i(32) << shift1) & (value2.hex >> shift2)).to_s(32)
+			answers = ((value1.to_i(16) << shift1) & (value2.hex >> shift2)).to_s(16)
 			bitwise = "&"
 		end
 

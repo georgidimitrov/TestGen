@@ -2,16 +2,16 @@ require_relative "PDFGen"
 require 'fileutils'
 
 class Main
-	attr_reader :numOfTests
+	#attr_reader :numOfTests
 
-	def initialize
-		@numOfTests = ARGV[0]
-	end
+		
+
 
 	def start
+		a = ARGV[0]
 		createDirectories
 		puts "Creating PDF files into PDFTests/..."
-		@numOfTests.to_i.times do |i|
+		a.to_i.times do |i|
 			PdfGen.createPdf("test" + (i+1).to_s+".pdf")
 		end
 
